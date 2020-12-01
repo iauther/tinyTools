@@ -22,7 +22,9 @@
     <ClInclude Include="src\Buffer.h" />
     <ClInclude Include="src\ecgViewer.h" />
     <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\Plot.h" />
     <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>

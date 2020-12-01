@@ -1,27 +1,28 @@
 //#include <string.h>
 //#include <stdlib.h>
 //#include <stdio.h>
-#include <stdafx.h>
+//#include <stdafx.h>
 #include <windows.h>
-#include "buffer.h"
+#include "Buffer.h"
 
-void XBuffer::reset(buffer_t *b)
+void RBuffer::reset(buffer_t *b)
 {
     b->pr   = 0;
 	b->pw   = 0;
 	b->dlen = 0;
 	b->size = 0;
-	b->buf  = NULL;
 }
 
 
-XBuffer::XBuffer()
+RBuffer::RBuffer()
 {
+    reset(&rb);
+    rb.buf = NULL;
 	mutex = CreateMutex(NULL,false,NULL);
 }
 
 
-XBuffer::~XBuffer()
+RBuffer::~RBuffer()
 {
     CloseHandle(mutex);
 	delete rb.buf;
@@ -30,12 +31,12 @@ XBuffer::~XBuffer()
 }
 
 
-int XBuffer::init(int size)
+int RBuffer::init(int size)
 {
 	lock();
 
-	reset(&rb);
 	rb.size = size;
+    delete rb.buf;
 	rb.buf = (char*)new BYTE[size];;
 
 	unlock();
@@ -44,7 +45,7 @@ int XBuffer::init(int size)
 }
 
 
-int XBuffer::read(void *buf, int len, int update)
+int RBuffer::read(void *buf, int len, int update)
 {
     int rlen;
     
@@ -105,7 +106,7 @@ int XBuffer::read(void *buf, int len, int update)
 
 
 
-int XBuffer::write(void *buf, int len, int update)
+int RBuffer::write(void *buf, int len, int update)
 {
     int wlen;
     
@@ -158,8 +159,19 @@ int XBuffer::write(void *buf, int len, int update)
 	return wlen;
 }
 
+int RBuffer::clear(void)
+{
+    lock();
 
-int XBuffer::update(int rw, int len)
+    reset(&rb);
+
+    unlock();
+
+    return 0;
+}
+
+
+int RBuffer::update(int rw, int len)
 {
     lock();
     
@@ -178,24 +190,24 @@ int XBuffer::update(int rw, int len)
 }
 
 
-int XBuffer::get_size(void)
+int RBuffer::get_size(void)
 {
 	return rb.size;
 }
 
 
-int XBuffer::get_datalen(void)
+int RBuffer::get_datalen(void)
 {
 	return rb.dlen;
 }
 
 
-void XBuffer::lock(void)
+void RBuffer::lock(void)
 {
     WaitForSingleObject(mutex, INFINITE);
 }
 
-void XBuffer::unlock(void)
+void RBuffer::unlock(void)
 {
     ReleaseMutex(mutex);
 }

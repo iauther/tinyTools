@@ -1,6 +1,7 @@
 #ifndef __PLOT_Hx__
 #define __PLOT_Hx__
 
+#include "stdafx.h"
 #include <windows.h>
 
 

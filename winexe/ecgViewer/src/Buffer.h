@@ -20,11 +20,11 @@ typedef struct {
 }buffer_t;
 
 
-class XBuffer
+class RBuffer
 {
 public:
-	XBuffer();
-	~XBuffer();
+	RBuffer();
+	~RBuffer();
 	int init(int size);
 	int read(void *buf, int len, int update);
 	int write(void *buf, int len, int update);

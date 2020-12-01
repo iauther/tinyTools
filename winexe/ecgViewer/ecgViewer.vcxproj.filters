@@ -30,6 +30,12 @@
     <ClInclude Include="src\targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Plot.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Buffer.cpp">
