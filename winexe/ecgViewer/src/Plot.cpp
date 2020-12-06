@@ -1,8 +1,6 @@
 // Plot.cpp : 实现文件
 //
 
-#include "stdafx.h"
-#include "CurveDrawing.h"
 #include "Plot.h"
 
 // CPlot
@@ -141,7 +139,7 @@ void CPlot::DrawTimeValue(CDC *pDC)
 {
     int i=0;
 
-    if((m_dLen<100) & (m_dLen >0))
+    if((m_dLen<100) && (m_dLen >0))
     {
         int scale = m_dLen/10;
 
@@ -238,8 +236,9 @@ CPlot::~CPlot()
     }
 }
 
-BEGIN_MESSAGE_MAP(CPlot, CWnd)
-END_MESSAGE_MAP()
+//BEGIN_MESSAGE_MAP(CPlot, CWnd)
+//    ON_COMMAND(ID_FILE_NEW, CWinApp::OnFileNew)
+//END_MESSAGE_MAP()
 
 /***********************************************************************************************
 *函数名 : DrawBasic

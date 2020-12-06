@@ -16,9 +16,9 @@
 #define DLLEXPORT __declspec(dllexport)
 #define	DLLIMPORT __declspec(dllimport)
 
+#include <afx.h>
 #include <afxwin.h>
 #include "stdio.h"
-#include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 

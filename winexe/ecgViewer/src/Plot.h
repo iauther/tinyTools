@@ -2,11 +2,15 @@
 #define __PLOT_Hx__
 
 #include "stdafx.h"
-#include <windows.h>
 
+
+typedef struct {
+    CTime time;
+    float dValue;
+}pValue;
 
 class CPlot{
-    
+    DECLARE_DYNAMIC(CPlot);
 public:
     CPlot();
     ~CPlot();
@@ -15,10 +19,10 @@ public:
     void DrawTimeValue(CDC *pDC);
     void ShowtimeValue(int scale,CDC *pDC);
     void AddPoint(CTime t,float d);
-    void CPlot::DrawBasic(CDC *pDC);
-    void CPlot::DrawGrids(CDC *pDC);
-    void CPlot::DrawXGrids(CDC *pDC);
-    void CPlot::DrawYGrids(CDC *pDC);
+    void DrawBasic(CDC *pDC);
+    void DrawGrids(CDC *pDC);
+    void DrawXGrids(CDC *pDC);
+    void DrawYGrids(CDC *pDC);
         
 private:
     int leftmargin;
@@ -26,18 +30,20 @@ private:
     int topmargin;
     int bottommargin;
 
-    COLORm_crBrgndColor;
-    COLOR m_crGridPen;
-    COLOR m_crCurve;
-    int m_pValue;
+    CRect m_Rect;
+    CRect m_skeletonRect;
+    COLORREF  m_crBrgndColor;
+    COLORREF  m_crGridPen;
+    COLORREF  m_crCurve;
     int m_dLen;
-    int m_LastValue;
-        
+    float m_LastValue;
+    pValue* m_pValue;
         
 };
 
 
 #endif
+
 
 
 

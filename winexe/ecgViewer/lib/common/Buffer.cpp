@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "Buffer.h"
 
-void RBuffer::reset(buffer_t *b)
+static void reset(buffer_t *b)
 {
     b->pr   = 0;
 	b->pw   = 0;
@@ -159,12 +159,11 @@ int RBuffer::write(void *buf, int len, int update)
 	return wlen;
 }
 
+
 int RBuffer::clear(void)
 {
     lock();
-
     reset(&rb);
-
     unlock();
 
     return 0;

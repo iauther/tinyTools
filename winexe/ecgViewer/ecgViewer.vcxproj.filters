@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Buffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\ecgViewer.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -30,24 +27,30 @@
     <ClInclude Include="src\targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="src\Plot.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\stdafx.h">
+    <ClInclude Include="lib\common\Buffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\io\Serial.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Buffer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\ecgViewer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Plot.cpp">
+    <ClCompile Include="lib\io\Serial.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Serial.cpp">
+    <ClCompile Include="lib\common\Buffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Plot.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
