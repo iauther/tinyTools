@@ -2,7 +2,6 @@
 //
 
 #include "stdafx.h"
-#include <windows.h>
 #include "CurveDrawing.h"
 #include "Plot.h"
 
