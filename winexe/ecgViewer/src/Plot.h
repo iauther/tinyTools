@@ -5,39 +5,40 @@
 
 
 typedef struct {
-    CTime time;
-    float dValue;
+    CTime           time;
+    float           dValue;
 }pValue;
 
 class CPlot{
     DECLARE_DYNAMIC(CPlot);
 public:
-    CPlot();
+    CPlot(HDC hdc);
     ~CPlot();
     
-    void DrawCurve(CDC *pDC);
-    void DrawTimeValue(CDC *pDC);
-    void ShowtimeValue(int scale,CDC *pDC);
-    void AddPoint(CTime t,float d);
-    void DrawBasic(CDC *pDC);
-    void DrawGrids(CDC *pDC);
-    void DrawXGrids(CDC *pDC);
-    void DrawYGrids(CDC *pDC);
+    void        drawCurve(void);
+    void        drawTimeValue(void);
+    void        showtimeValue(int scale);
+    void        addPoint(CTime t,float d);
+    void        drawRect(void);
+    void        drawGrids(void);
+    void        drawXGrids(void);
+    void        drawYGrids(void);
         
 private:
-    int leftmargin;
-    int rightmargin;
-    int topmargin;
-    int bottommargin;
+    int         leftmargin;
+    int         rightmargin;
+    int         topmargin;
+    int         bottommargin;
 
-    CRect m_Rect;
-    CRect m_skeletonRect;
-    COLORREF  m_crBrgndColor;
-    COLORREF  m_crGridPen;
-    COLORREF  m_crCurve;
-    int m_dLen;
-    float m_LastValue;
-    pValue* m_pValue;
+    HDC         m_Hdc;
+    CRect       m_Rect;
+    CRect       m_skeletonRect;
+    COLORREF    m_crBrgndColor;
+    COLORREF    m_crGridPen;
+    COLORREF    m_crCurve;
+    int         m_dLen;
+    float       m_LastValue;
+    pValue*     m_pValue;
         
 };
 
