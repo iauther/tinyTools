@@ -3,6 +3,12 @@
 
 #include "stdafx.h"
 
+typedef struct {
+    int           left;
+    int           right;
+    int           top;
+    int           bottom;
+}margin_t;
 
 typedef struct {
     CTime           time;
@@ -12,17 +18,18 @@ typedef struct {
 class CPlot{
     DECLARE_DYNAMIC(CPlot);
 public:
-    CPlot(HDC hdc);
+    CPlot(CDC *pDC);
     ~CPlot();
     
     void        drawCurve(void);
     void        drawTimeValue(void);
     void        showtimeValue(int scale);
     void        addPoint(CTime t,float d);
-    void        drawRect(void);
-    void        drawGrids(void);
-    void        drawXGrids(void);
-    void        drawYGrids(void);
+    void        drawRect(CRect rect, COLORREF color);
+    void        fillRect(CRect rect, COLORREF color);
+    void        drawXGrids(int x1, int x2, int nx, COLORREF color);
+    void        drawYGrids(int y1, int y2, int ny, COLORREF color);
+    void        drawGrids(CRect rect, int nx, int ny, COLORREF color);
         
 private:
     int         leftmargin;
@@ -30,7 +37,7 @@ private:
     int         topmargin;
     int         bottommargin;
 
-    HDC         m_Hdc;
+    CDC         *m_pDC;
     CRect       m_Rect;
     CRect       m_skeletonRect;
     COLORREF    m_crBrgndColor;
