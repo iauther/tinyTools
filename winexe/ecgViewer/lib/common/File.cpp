@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include "File.h"
 
+static int get_fsize(FILE* fp)
+{
+	int fsize;
+	unsigned int pos = ftell(fp);
+
+	fseek(fp, 0, SEEK_END);
+	fsize = ftell(fp);
+	fseek(fp, pos, SEEK_SET);
+
+	return fsize;
+}
 
 int XFILE::size(char* path)
 {
