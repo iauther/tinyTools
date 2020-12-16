@@ -13,7 +13,7 @@ typedef struct {
 typedef struct {
     CTime           time;
     float           dValue;
-}pValue;
+}point_t;
 
 class CPlot{
     DECLARE_DYNAMIC(CPlot);
@@ -21,32 +21,18 @@ public:
     CPlot(CDC *pDC);
     ~CPlot();
     
-    void        drawCurve(void);
-    void        drawTimeValue(void);
-    void        showtimeValue(int scale);
-    void        addPoint(CTime t,float d);
-    void        drawRect(CRect rect, COLORREF color);
-    void        fillRect(CRect rect, COLORREF color);
-    void        drawXGrids(int x1, int x2, int nx, COLORREF color);
-    void        drawYGrids(int y1, int y2, int ny, COLORREF color);
-    void        drawGrids(CRect rect, int nx, int ny, COLORREF color);
-        
-private:
-    int         leftmargin;
-    int         rightmargin;
-    int         topmargin;
-    int         bottommargin;
-
-    CDC         *m_pDC;
-    CRect       m_Rect;
-    CRect       m_skeletonRect;
-    COLORREF    m_crBrgndColor;
-    COLORREF    m_crGridPen;
-    COLORREF    m_crCurve;
-    int         m_dLen;
-    float       m_LastValue;
-    pValue*     m_pValue;
-        
+    void      drawCurve(CRect rect, COLORREF color);
+    void      addPoint(CRect rect, CTime t, float d);
+    void      drawRect(CRect rect, COLORREF color);
+    void      fillRect(CRect rect, COLORREF color);
+    void      drawXGrids(CRect rect, int nx, COLORREF color);
+    void      drawYGrids(CRect rect, int ny, COLORREF color);
+    void      drawGrids(CRect rect, int nx, int ny, COLORREF color);
+             
+private:     
+    CDC       *m_pDC;
+    int       m_Cnt;
+    point_t   *m_pPoint;
 };
 
 
