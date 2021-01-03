@@ -44,8 +44,8 @@ void CPlot::drawCurve(CRect rect, COLORREF color)
     int offset=3;
 
     if(m_Cnt >=2) {
-        if(m_dLen < 100){
-            for(int i=0;i<m_dLen-1;i++) {                      //画图都是从左向右，左边的点都是先出来的点，但视觉效果是从右向左
+        if(m_Cnt < 100){
+            for(int i=0;i< m_Cnt -1;i++) {                      //画图都是从左向右，左边的点都是先出来的点，但视觉效果是从右向左
                 docnumber1--;
                 m_pDC->MoveTo(CPoint(rect.right-(float)smallgridwidth*(docnumber1),rect.Height()+100-
                     ((m_pPoint[i].dValue-1)*intervalY)));
@@ -57,9 +57,9 @@ void CPlot::drawCurve(CRect rect, COLORREF color)
             for(i=0;i<100;i++){
                 for(int i=0;i<100;i++) {                      //同理  这里也是从左向右描点
                     m_pDC->MoveTo(CPoint(rect.right - smallgridwidth*(100-i),rect.Height()+ 100 -
-                        ((m_pPoint[i+m_dLen-1-100].dValue-1)*intervalY)));
+                        ((m_pPoint[i+ m_Cnt -1-100].dValue-1)*intervalY)));
                     m_pDC->LineTo(CPoint(rect.right - smallgridwidth*(100-i-1),rect.Height()+ 100 -
-                        ((m_pPoint[i+m_dLen-100].dValue-1)*intervalY)));
+                        ((m_pPoint[i+ m_Cnt -100].dValue-1)*intervalY)));
                 }
             }
         }    
