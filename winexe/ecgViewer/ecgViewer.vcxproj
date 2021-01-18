@@ -31,6 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -38,12 +39,14 @@
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +54,7 @@
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -141,10 +145,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\ecgViewer.cpp" />
+    <ClCompile Include="src\Plot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ecgViewer.h" />
     <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\Plot.h" />
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\targetver.h" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿#include "framework.h"
 #include "ecgViewer.h"
+#include "plot.h"
 
 #define MAX_LOADSTRING 100
 
@@ -7,6 +8,12 @@
 HINSTANCE hInst;                                // 当前实例
 WCHAR szTitle[MAX_LOADSTRING];                  // 标题栏文本
 WCHAR szWindowClass[MAX_LOADSTRING];            // 主窗口类名
+CPlot mPlot;
+DWORD  myThreadId;
+HANDLE myThreadHandle;
+
+
+
 
 // 此代码模块中包含的函数的前向声明:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -66,6 +73,15 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 }
 
 
+DWORD WINAPI myThread(PVOID pParameter)
+{
+    return 0;
+}
+
+
+
+
+
 //   函数: InitInstance(HINSTANCE, int)
 //   目标: 保存实例句柄并创建主窗口
 //   注释:
@@ -83,6 +99,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   myThreadHandle = CreateThread(NULL, 0, myThread, 0, 0, &myThreadId);
 
    return TRUE;
 }
@@ -135,9 +153,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		case WM_PAINT:
 		{
+            CRect ecgRect;
+            COLORREF color=RGB(8,8,8);
 			PAINTSTRUCT ps;
 			HDC hdc = BeginPaint(hWnd, &ps);
 			// TODO: 在此处添加使用 hdc 的任何绘图代码...
+            mPlot.init(hdc);
+            GetWindowRect(hWnd, &ecgRect);
+            mPlot.drawCurve(ecgRect, color);
+
 			EndPaint(hWnd, &ps);
 		}
 		break;

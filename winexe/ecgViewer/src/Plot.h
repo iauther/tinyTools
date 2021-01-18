@@ -1,7 +1,7 @@
 #ifndef __PLOT_Hx__
 #define __PLOT_Hx__
 
-#include "stdafx.h"
+#include <afxwin.h>
 
 typedef struct {
     int           left;
@@ -16,11 +16,11 @@ typedef struct {
 }point_t;
 
 class CPlot{
-    DECLARE_DYNAMIC(CPlot);
 public:
-    CPlot(CDC *pDC);
+    CPlot();
     ~CPlot();
     
+    void      init(HDC hdc);
     void      drawCurve(CRect rect, COLORREF color);
     void      addPoint(CRect rect, CTime t, float d);
     void      drawRect(CRect rect, COLORREF color);

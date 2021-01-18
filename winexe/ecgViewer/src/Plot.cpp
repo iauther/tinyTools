@@ -1,15 +1,8 @@
-// Plot.cpp : 实现文件
-//
+#include "plot.h"
 
-#include "Plot.h"
-
-// CPlot
-
-IMPLEMENT_DYNAMIC(CPlot, CWnd)
-
-CPlot::CPlot(CDC* pDC)
+CPlot::CPlot()
 {
-    m_pDC = pDC;
+    m_pDC = NULL;
     m_Cnt = 0;
     m_pPoint = NULL;
 }
@@ -17,11 +10,16 @@ CPlot::CPlot(CDC* pDC)
 
 CPlot::~CPlot()
 {
-    if (m_pPoint != NULL)
-    {
+    if (m_pPoint != NULL) {
         free(m_pPoint);
         m_pPoint = NULL;
     }
+}
+
+
+void CPlot::init(HDC hdc)
+{
+    m_pDC = CDC::FromHandle(hdc);
 }
 
 void CPlot::drawCurve(CRect rect, COLORREF color)
